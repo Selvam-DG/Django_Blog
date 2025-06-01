@@ -1,0 +1,14 @@
+{% extends 'blog_app/home.html' %}
+{% block content %}
+<h2>{% if post %}Edit{% else %}New{% endif %} Post</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <input type="text" name="title" class="form-control" placeholder="Title" value="{{ post.title|default:'' }}">
+    </div>
+    <div class="mb-3">
+        <textarea name="body" class="form-control" placeholder="Content">{{ post.body|default:'' }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+{% endblock %}
